@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo Herói vs Vilão</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+    <div class="game-container">
+        <div class="character hero">
+            <h2>{{ hero.name }}</h2>
+            <div class="life-bar" :style="{ width: (hero.life / hero.maxLife * 100) + '%' }">{{ hero.life }}/{{ hero.maxLife }}</div>
+            <div class="actions">
+                <button @click="performAction('attack', true)" :disabled="gameOver">Atacar</button>
+                <button @click="performAction('defend', true)" :disabled="gameOver">Defender</button>
+                <button @click="performAction('usePotion', true)" :disabled="gameOver || hero.potions === 0">Usar Poção ({{ hero.potions }})</button>
+                <button @click="performAction('flee', true)" :disabled="gameOver">Fugir</button>
+            </div>
+            <img :src="hero.sprite" alt="Herói" class="sprite">
+        </div>
+        <div class="battle-log">
+            <h3>Histórico de Batalha</h3>
+            <ul>
+                <li v-for="(log, index) in battleLog" :key="index">{{ log }}</li>
+            </ul>
+        </div>
+        <div class="character villain">
+            <h2>{{ villain.name }}</h2>
+            <div class="life-bar" :style="{ width: (villain.life / villain.maxLife * 100) + '%' }">{{ villain.life }}/{{ villain.maxLife }}</div>
+            <img :src="villain.sprite" alt="Vilão" class="sprite">
+        </div>
+    </div>
+    <div v-if="gameOver" class="game-over">
+        <h2>{{ gameOverMessage }}</h2>
+        <img src="images/1V8t.gif" alt="GIF vencedor" class="winner-gif">
+        <button @click="resetGame">Jogar Novamente</button>
+    </div>
+</div>
+<audio id="attackSound" src="attack.mp3"></audio>
+<audio id="defendSound" src="defend.mp3"></audio>
+<audio id="potionSound" src="potion.mp3"></audio>
+<audio id="fleeSound" src="flee.mp3"></audio>
+<script src="index.js"></script>
+</body>
+</html>

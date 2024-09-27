@@ -1,0 +1,149 @@
+body {
+    background: url('images/fundo.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+.game-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    align-items: flex-end;
+}
+
+.character {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.life-bar {
+    background-color: red;
+    height: 20px;
+    color: white;
+    text-align: center;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255,0,0,0.7);
+}
+
+.sprite {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    margin-top: 340px;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.actions button {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.actions button:hover {
+    background-color: #45a049;
+}
+
+.battle-log {
+    width: 40%;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.battle-log h3 {
+    color: #FFD700;
+    font-size: 24px;
+}
+
+.battle-log ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.battle-log li {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.game-over {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.winner-gif {
+    width: 300px;
+    height: auto;
+    margin-top: 20px;
+}
+
+h2 {
+    font-size: 28px;
+    color: #FFD700;
+    margin-bottom: 10px;
+}
+
+/* Efeitos visuais */
+.attack-effect {
+    animation: attackAnimation 1s ease-out;
+}
+
+@keyframes attackAnimation {
+    0% { background-color: rgba(255, 0, 0, 0.3); }
+    100% { background-color: transparent; }
+}
+
+.defense-effect {
+    animation: defenseAnimation 1s ease-out;
+}
+
+@keyframes defenseAnimation {
+    0% { background-color: rgba(0, 0, 255, 0.3); }
+    100% { background-color: transparent; }
+}
+
+.potion-effect {
+    animation: potionAnimation 1s ease-out;
+}
+
+@keyframes potionAnimation {
+    0% { background-color: rgba(0, 255, 0, 0.3); }
+    100% { background-color: transparent; }
+}
+
+.flee-effect {
+    animation: fleeAnimation 1s ease-out;
+}
+
+@keyframes fleeAnimation {
+    0% { background-color: rgba(255, 255, 0, 0.3); }
+    100% { background-color: transparent; }
+}
+
+/* Efeito de shake ao receber ataque */
+.shake {
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+}
